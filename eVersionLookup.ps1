@@ -1,12 +1,6 @@
 
 # Use Build number (long format) for LatestBuild
-
-$Script:eVersions = @(
-    [pscustomobject]@{
-        VersionName = '2019';
-        LatestBuild = '15.02.1118.015';
-        Name        = 'Exchange Server 2019 CU12 October 11, 2022 Security Update';
-        Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2019';
+     = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2019';
     }
     [pscustomobject]@{
         VersionName = '2016';
