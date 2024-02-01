@@ -3,14 +3,14 @@
 $Script:eVersions = @(
     [pscustomobject]@{
         VersionName = '2019';
-        LatestBuild = '15.02.1258.027';
-        Name        = 'Microsoft Exchange Server 2019: October 10, 2023 Security Update';
+        LatestBuild = '15.02.1258.028';
+        Name        = 'Microsoft Exchange Server 2019: November 14, 2023 Security Update';
         Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2019';
     }
     [pscustomobject]@{
         VersionName = '2016';
-        LatestBuild = '15.01.2507.034';
-        Name        = 'Microsoft Exchange Server 2016: October 10, 2023 Security Update';
+        LatestBuild = '15.01.2507.035';
+        Name        = 'Microsoft Exchange Server 2016: November 14, 2023 Security Update';
         Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2016';
     }
     [pscustomobject]@{
@@ -28,6 +28,8 @@ $Script:eVersions = @(
 )
 
 $Script:onlineCuLookup = @{
+    "Exchange Server 2019 CU13 Nov 23 Security Update"           = "15.02.1258.028"
+    "Exchange Server 2016 CU23 Nov 23 Security Update"           = "15.01.2507.035"
     "Exchange Server 2016 CU23 Oct 23 Security Update"           = "15.01.2507.034"
     "Exchange Server 2016 CU23 V2 Aug 23 Security Update"        = "15.01.2507.032"
     "Exchange Server 2016 CU23 Aug 23 Security Update"           = "15.01.2507.031"
