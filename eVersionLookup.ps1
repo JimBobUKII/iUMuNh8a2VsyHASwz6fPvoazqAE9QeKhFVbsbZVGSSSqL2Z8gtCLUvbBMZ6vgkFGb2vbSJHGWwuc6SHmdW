@@ -3,14 +3,14 @@
 $Script:eVersions = @(
     [pscustomobject]@{
         VersionName = '2019';
-        LatestBuild = '15.02.1544.009';
-        Name        = 'Microsoft Exchange Server 2019: March 12, 2024 Security Update';
+        LatestBuild = '15.02.1544.014';
+        Name        = 'Microsoft Exchange Server 2019: November 27, 2024 Security Update';
         Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2019';
     }
     [pscustomobject]@{
         VersionName = '2016';
-        LatestBuild = '15.01.2507.037';
-        Name        = 'Microsoft Exchange Server 2016: March 12, 2024 Security Update';
+        LatestBuild = '15.01.2507.044';
+        Name        = 'Microsoft Exchange Server 2016: November 27, 2024 Security Update';
         Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2016';
     }
     [pscustomobject]@{
@@ -28,9 +28,15 @@ $Script:eVersions = @(
 )
 
 $Script:onlineCuLookup = @{
+    "Exchange Server 2019 CU14 V2 Nov 24 Security Update"        = "15.02.1544.014"
+    "Exchange Server 2019 CU14 Nov 24 Security Update"           = "15.02.1544.013"
+    "Exchange Server 2019 CU14 Apr 24 Security Update"           = "15.02.1544.011"
     "Exchange Server 2019 CU14 Mar 24 Security Update"           = "15.02.1544.009"
     "Exchange Server 2019 CU14 (2024H1) Feb 24 Cumulative Update"= "15.02.1544.004"
     "Exchange Server 2019 CU13 Mar 24 Security Update"           = "15.02.1258.032"
+    "Exchange Server 2016 CU23 V2 Nov 24 Security Update"        = "15.01.2507.044"
+    "Exchange Server 2016 CU23 Nov 24 Security Update"           = "15.01.2507.043"
+    "Exchange Server 2016 CU23 Apr 24 Security Update"           = "15.01.2507.039"
     "Exchange Server 2016 CU23 Mar 24 Security Update"           = "15.01.2507.037"
     "Exchange Server 2019 CU13 Nov 23 Security Update"           = "15.02.1258.028"
     "Exchange Server 2016 CU23 Nov 23 Security Update"           = "15.01.2507.035"
