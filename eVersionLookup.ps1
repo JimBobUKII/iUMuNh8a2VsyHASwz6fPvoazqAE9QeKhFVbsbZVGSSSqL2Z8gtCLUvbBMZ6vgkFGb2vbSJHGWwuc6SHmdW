@@ -1,39 +1,53 @@
 # Use Build number (long format) for LatestBuild
 
 $Script:eVersions = @(
+[pscustomobject]@{
+        VersionName = 'Exchange Server SE';
+        LatestBuild = '15.02.2562.017';
+        Name        = 'Microsoft Exchange Server SE: July 1, 2025 RTM';
+        Url         = 'https://learn.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates#exchange-server-se';
+    }	
     [pscustomobject]@{
         VersionName = '2019';
-        LatestBuild = '15.02.1544.014';
-        Name        = 'Microsoft Exchange Server 2019: November 27, 2024 Security Update';
-        Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2019';
+        LatestBuild = '15.02.1748.026';
+        Name        = 'Microsoft Exchange Server 2019: May 29, 2025 Update';
+        Url         = 'https://learn.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2019';
     }
     [pscustomobject]@{
         VersionName = '2016';
-        LatestBuild = '15.01.2507.044';
-        Name        = 'Microsoft Exchange Server 2016: November 27, 2024 Security Update';
-        Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2016';
+        LatestBuild = '15.01.2507.057';
+        Name        = 'Microsoft Exchange Server 2016: May 29, 2025 Hotfix Update';
+        Url         = 'https://learn.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2016#exchange-server-2016';
     }
     [pscustomobject]@{
         VersionName = '2013';
         LatestBuild = '15.00.1497.048';
         Name        = 'Microsoft Exchange Server 2013: March 14, 2023 Security Update';
-        Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2013';
+        Url         = 'https://learn.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2013#exchange-server-2013';
     }
     [pscustomobject]@{
         VersionName = '2010';
         LatestBuild = '14.03.0513.000';
         Name        = 'Exchange Server 2010 SP3 Update Rollup 32, March 2, 2021';
-        Url         = 'https://docs.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2019#exchange-server-2010';
+        Url         = 'https://learn.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates?view=exchserver-2010#exchange-server-2010';
     }
 )
 
 $Script:onlineCuLookup = @{
+    "Exchange Server SE RTM July 25"                             = "15.02.2562.017"
+    "Exchange Server 2019 CU15 May 25 Hotfix Update"	         = "15.02.1748.026"
+    "Exchange Server 2019 CU15 Apr 25 Hotfix Update"	         = "15.02.1748.024"
+    "Exchange Server 2019 CU15 (2025H1)"	                     = "15.02.1748.010"
+    "Exchange Server 2019 CU14 May 25 Hotfix Update"	         = "15.02.1544.027"
+    "Exchange Server 2019 CU14 Apr 25 Hotfix Update"	         = "15.02.1544.025"
     "Exchange Server 2019 CU14 V2 Nov 24 Security Update"        = "15.02.1544.014"
     "Exchange Server 2019 CU14 Nov 24 Security Update"           = "15.02.1544.013"
     "Exchange Server 2019 CU14 Apr 24 Security Update"           = "15.02.1544.011"
     "Exchange Server 2019 CU14 Mar 24 Security Update"           = "15.02.1544.009"
     "Exchange Server 2019 CU14 (2024H1) Feb 24 Cumulative Update"= "15.02.1544.004"
     "Exchange Server 2019 CU13 Mar 24 Security Update"           = "15.02.1258.032"
+    "Exchange Server 2016 CU23 May 25 Hotfix Update"             = "15.01.2507.057"
+    "Exchange Server 2016 CU23 Apr 25 Hotfix Update"             = "15.01.2507.055"
     "Exchange Server 2016 CU23 V2 Nov 24 Security Update"        = "15.01.2507.044"
     "Exchange Server 2016 CU23 Nov 24 Security Update"           = "15.01.2507.043"
     "Exchange Server 2016 CU23 Apr 24 Security Update"           = "15.01.2507.039"
