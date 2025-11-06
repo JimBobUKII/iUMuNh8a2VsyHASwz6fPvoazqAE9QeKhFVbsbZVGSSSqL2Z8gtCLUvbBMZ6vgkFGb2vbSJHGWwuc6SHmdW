@@ -1,0 +1,24 @@
+WALLIX-SMI DEFINITIONS ::= BEGIN
+IMPORTS
+    MODULE-IDENTITY,
+    enterprises
+        FROM SNMPv2-SMI
+;
+wallix MODULE-IDENTITY
+    LAST-UPDATED  "201907100000Z"
+    ORGANIZATION  "WALLIX. Trace, Audit & Trust"
+    CONTACT-INFO
+        "Contact: WALLIX
+         Postal:  250 Bis rue du Faubourg Saint-Honore
+                  75008 PARIS - France
+         Web:     www.wallix.com"
+    DESCRIPTION
+        "Copyright (c) 2019 WALLIX. All rights reserved.
+         This MIB module specifies the anchor point of the
+         Wallix MIBs and definitions common to these MIBs."
+    REVISION  "201907100000Z"
+        DESCRIPTION
+            " 1.0  - Initial Document."
+    ::= { enterprises 30373 }
+
+END
