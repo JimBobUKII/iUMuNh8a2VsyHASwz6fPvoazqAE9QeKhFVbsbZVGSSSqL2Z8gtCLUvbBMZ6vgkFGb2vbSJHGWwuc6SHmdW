@@ -1,0 +1,357 @@
+WALLIX-BASTION-MIB DEFINITIONS ::= BEGIN
+IMPORTS
+    NOTIFICATION-TYPE,
+    MODULE-IDENTITY,
+    OBJECT-TYPE,
+    Integer32
+        FROM SNMPv2-SMI
+    DisplayString,
+    TruthValue
+        FROM SNMPv2-TC
+    wallix
+        FROM WALLIX-SMI
+;
+
+bastion MODULE-IDENTITY
+    LAST-UPDATED  "201907100000Z"
+    ORGANIZATION  "WALLIX. Trace, Audit & Trust"
+    CONTACT-INFO
+        "Contact: WALLIX
+         Postal:  250 Bis rue du Faubourg Saint-Honore
+                  75008 PARIS - France
+         Web:     www.wallix.com"
+    DESCRIPTION
+        "Copyright (c) 2019 WALLIX. All rights reserved.
+         This MIB module specifies the anchor point of the
+         WALLIX Bastion MIBs and definitions common to these MIBs."
+    REVISION  "201907100000Z"
+        DESCRIPTION
+            " 1.0  - Initial Document."
+    ::= { wallix 1 }
+
+
+-- -----------------------------------------------------------------------------
+-- bastion
+-- -----------------------------------------------------------------------------
+
+audit OBJECT IDENTIFIER
+    ::= { bastion 1 }
+
+servicesStatus OBJECT IDENTIFIER
+    ::= { bastion 2 }
+
+configuration  OBJECT IDENTIFIER
+    ::= { bastion 3 }
+
+-- IMPLEMENTED --
+version        OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Version of WALLIX Bastion."
+    ::= { bastion 4 }
+
+-- IMPLEMENTED --
+licenseInfo    OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "License information in json format,
+         refer to the resource 'License Info' in API doc for details.
+         Example:
+             {
+                 'evaluation': false,
+                 'password_manager': true,
+                 'session_manager': true,
+                 'enterprise': true,
+                 'expiration_date': '2019-12-31',
+                 'is_expired': false,
+                 'primary': 35,
+                 'primary_max': 100,
+                 'secondary': 42,
+                 'secondary_max': 100,
+                 'resource': 157,
+                 'resource_max': 200
+             }"
+    ::= { bastion 5 }
+
+
+-- -----------------------------------------------------------------------------
+-- servicesStatus
+-- -----------------------------------------------------------------------------
+
+tracing OBJECT IDENTIFIER
+    ::= { servicesStatus 1 }
+-- NOT IMPLEMENTED --
+-- servicesRunningStatus OBJECT-TYPE
+--     SYNTAX      DisplayString
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "Status of all services of WALLIX Bastion given in json format"
+--     ::= { servicesStatus 2 }
+
+-- IMPLEMENTED --
+bastionStatus OBJECT-TYPE
+    SYNTAX      TruthValue
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "true(1) means all services of WALLIX Bastion are up and running,
+         false(2) means one service of WALLIX Bastion is unreachable."
+    ::= { servicesStatus 3 }
+
+-- IMPLEMENTED --
+remoteStorageStatus OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Indicates the status of the Remote Storage:
+        - UNMOUNTED, the Remote Storage is not mounted.
+        - UNREACHABLE, the Remote Storage is mounted but not reachable.
+        - NO_ACCESS, the Remote Storage is mounted and reachable, but no
+          operation is allowed.
+        - READ_ONLY, the Remote Storage is mounted and reachable, and any read
+          operation is allowed.
+        - WRITE_ONLY, the Remote Storage is mounted and reachable, and any
+          creation, modification and deletion operation is allowed.
+        - CREATE_ONLY, the Remote Storage is mounted and reachable, and any
+          creation operation is allowed.
+        - NO_DELETION, the Remote Storage is mounted and reachable, and any
+          read, creation and modification operation is allowed.
+        - FULL_ACCESS, the Remote Storage is mounted and reachable, and any
+          read, creation, modification and deletion operation is allowed.
+        - UNKNOWN_ACCESS, the Remote Storage is mounted and reachable, but
+          permission setting cannot be identified.
+        - UNKNOWN, The status of the Remote Storage cannot be established.
+          Please contact Wallix support at support.wallix.com."
+    ::= { servicesStatus 4 }
+
+-- IMPLEMENTED --
+encryptionStatus OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Indicates the status of the Encryption:
+        - LOCKED, the Encryption is enabled and is locked.
+        - UNLOCKED, either the Encryption is enabled and unlocked
+          or the Encryption is disabled
+        - UNKNOWN, the status of the Encryption cannot be established. Please
+          contact Wallix support at support.wallix.com."
+    ::= { servicesStatus 5 }
+
+-- NOT IMPLEMENTED --
+-- highAvailabilityStatus OBJECT-TYPE
+--     SYNTAX      DisplayString
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "Indicates the status of the High Availability feature:
+--         - HA_NOT_CONFIGURED, the High Availability feature is disabled.
+--         - HA_MASTER, the High Availability feature is enabled and running
+--           in MASTER mode.
+--         - HA_SLAVE, the High Availability feature is enabled and running
+--           in SLAVE mode.
+--         - HA_DOWN, the High Availability feature is enabled but not running.
+--         - HA_FATAL_ERROR, the High Availability feature is enabled but failed
+--           during execution. Please contact Wallix support at support.wallix.com.
+--         - HA_UNKNOWN, the status of the High Availability feature cannot be 
+--           established. Please contact Wallix support at support.wallix.com."
+--     ::= { servicesStatus 6 }
+
+
+-- -----------------------------------------------------------------------------
+-- tracing
+-- -----------------------------------------------------------------------------
+
+remote OBJECT IDENTIFIER
+    ::= { tracing 1 }
+
+local OBJECT IDENTIFIER
+    ::= { tracing 2 }
+
+
+-- -----------------------------------------------------------------------------
+-- remote
+-- -----------------------------------------------------------------------------
+
+-- NOT IMPLEMENTED --
+-- remoteDiskSpace OBJECT-TYPE
+--     SYNTAX      Integer32
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "Total disk space used by trace files on remote storage."
+--     ::= { remote 1 }
+
+-- NOT IMPLEMENTED --
+-- remoteTraceCount OBJECT-TYPE
+--     SYNTAX      Integer32
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "Number of trace files on remote storage."
+--     ::= { remote 2 }
+
+
+-- -----------------------------------------------------------------------------
+-- local
+-- -----------------------------------------------------------------------------
+
+-- IMPLEMENTED --
+localDiskSpace OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Total disk space in kilobyte used by trace files on local storage."
+    ::= { local 1 }
+
+-- NOT IMPLEMENTED --
+-- localTraceCount OBJECT-TYPE
+--     SYNTAX      Integer32
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "Number of trace files on local storage."
+--     ::= { local 2 }
+
+-- NOT IMPLEMENTED --
+-- localMovingTraceCount OBJECT-TYPE
+--     SYNTAX      Integer32
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "Number of local trace files scheduled to be moved to remote storage."
+--     ::= { local 3 }
+
+
+-- -----------------------------------------------------------------------------
+-- configuration
+-- -----------------------------------------------------------------------------
+
+-- NOT IMPLEMENTED --
+-- sshConfig OBJECT-TYPE
+--     SYNTAX      TruthValue
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "true(1) means connection to target devices with SSH is activated,
+--          false(2) means connection to target devices with SSH is not activated."
+--     ::= { configuration 1 }
+
+-- NOT IMPLEMENTED --
+-- rdpConfig OBJECT-TYPE
+--     SYNTAX      TruthValue
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "true(1) means connection to target devices with RDP is activated,
+--          false(2) means connection to target devices with RDP is not activated."
+--     ::= { configuration 2 }
+
+-- NOT IMPLEMENTED --
+-- sshadminConfig OBJECT-TYPE
+--     SYNTAX      TruthValue
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "true(1) means SSH connection to Bastion on administration port is activated,
+--          false(2) means SSH connection to Bastion on administration port is not activated."
+--     ::= { configuration 3 }
+
+-- NOT IMPLEMENTED --
+-- guiConfig OBJECT-TYPE
+--     SYNTAX      TruthValue
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "true(1) means connection to the Bastion GUI is activated,
+--          false(2) means connection to the Bastion GUI is not activated."
+--     ::= { configuration 4 }
+
+-- NOT IMPLEMENTED --
+-- iptableConfig OBJECT-TYPE
+--     SYNTAX      TruthValue
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "true(1) means Firewall is activated,
+--          false(2) means Firewall is not activated."
+--     ::= { configuration 5 }
+
+
+-- -----------------------------------------------------------------------------
+-- audit
+-- -----------------------------------------------------------------------------
+
+-- IMPLEMENTED --
+totalSessionCount OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Number of all primary and secondary sessions."
+    ::= { audit 1 }
+
+-- IMPLEMENTED --
+primarySessionCount OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Number of current primary sessions."
+    ::= { audit 2 }
+
+-- IMPLEMENTED --
+secondarySessionCount OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Number of current secondary sessions."
+    ::= { audit 3 }
+
+-- IMPLEMENTED --
+ghostSessionCount OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Number of ghost sessions."
+    ::= { audit 4 }
+
+-- NOT IMPLEMENTED --
+-- nonIntegSessionCount OBJECT-TYPE
+--     SYNTAX      Integer32
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "Number of sessions with invalid traces."
+--     ::= { audit 5 }
+
+-- NOT IMPLEMENTED --
+-- changePWDStatus OBJECT-TYPE
+--     SYNTAX      TruthValue
+--     MAX-ACCESS  read-only
+--     STATUS      current
+--     DESCRIPTION
+--         "true(1) means the password change was successful,
+--          false(2) means there was an issue with the password change."
+--     ::= { audit 6 }
+
+-- IMPLEMENTED --
+pendingApprovalCount OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+        "Number of requests pending for approval."
+    ::= { audit 7 }
+
+
+END
